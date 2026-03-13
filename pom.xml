@@ -12,10 +12,24 @@
     <name>wanqu-copilot</name>
     <description>Wanqu Copilot Project</description>
 
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>17</java.version>
+
+        <!-- Defaults for IDE / environments where git-commit-id-maven-plugin isn't executed -->
+        <git.branch>unknown</git.branch>
+        <git.commit.id.abbrev>unknown</git.commit.id.abbrev>
+        <git.commit.id.full>unknown</git.commit.id.full>
+
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <spring-boot.version>3.5.0</spring-boot.version>
