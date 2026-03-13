@@ -277,7 +277,8 @@ public class BrowserFrame extends JFrame {
                 () -> {
                   closeJcefProgressDialog();
                   // 创建浏览器 - 使用带 host 的 URL 以便正确解析相对路径
-                  String initialUrl = "http://localhost:5173/";
+//                  String initialUrl = "http://localhost:5173/";
+                    String initialUrl = "wanqu-copilot://app/index.html";
                   createBrowserAndShow(initialUrl);
                 });
           } catch (Exception e) {
