@@ -297,7 +297,6 @@ public class BrowserFrame extends JFrame {
         });
 
     log.info("BrowserFrame.prepare scheduled JCEF initialization in background");
-    log.info("BrowserFrame.prepare exit (async init; UI will appear when ready)");
   }
 
   // Extracted helper methods to reduce prepare() length
