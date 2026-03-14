@@ -4,7 +4,10 @@ import com.wanqu.copilot.entity.ProxyConfig;
 import com.wanqu.copilot.entity.WanquProxyAuthenticator;
 import com.wanqu.copilot.entity.WanquProxySelector;
 import java.net.http.HttpClient;
+
+import io.micrometer.context.ContextRegistry;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +19,7 @@ import org.springframework.web.client.RestClient;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import reactor.netty.transport.ProxyProvider;
+import reactor.util.context.ReactorContextAccessor;
 
 @Configuration
 @Slf4j
@@ -68,14 +72,15 @@ public class ClientConfig {
             }));
   }
 
-  //    @Bean
-  //    ClientHttpConnector reactClientHttpConnector(HttpClient httpClient) {
-  //        return new JdkClientHttpConnector(httpClient);
-  //    }
-
   @Bean
   ClientHttpConnector reactClientHttpConnector(
       @Qualifier("reactorHttpClient") reactor.netty.http.client.HttpClient reactorHttpClient) {
+      ContextRegistry contextRegistry = ContextRegistry.getInstance();
+
+      if (CollectionUtils.isEmpty(contextRegistry.getContextAccessors())) {
+          contextRegistry.registerContextAccessor(new ReactorContextAccessor());
+          log.info("Registered ReactorContextAccessor with ContextRegistry");
+      }
     return new ReactorClientHttpConnector(reactorHttpClient);
   }
 

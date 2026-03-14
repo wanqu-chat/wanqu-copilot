@@ -2,6 +2,10 @@
 
 A minimal desktop Copilot demo app.
 
+## Preview
+
+![Preview](./preview.jpg)
+
 This project is a **simplest-possible desktop Copilot example** built with:
 
 - **Java 17** + **Spring Boot 3** (app lifecycle, config)
@@ -57,7 +61,21 @@ JCEF_SRC_DIR=./jcef ./build.sh
 
 The script copies it to `WanquCopilot.app/Contents/Resources/jcef`.
 
+## Proxy (dynamic toggle)
+
+This demo supports **enabling/disabling proxy at runtime** from the UI.
+
+- When proxy is **enabled**, API requests will route through the configured proxy.
+- When proxy is **disabled**, API requests go out directly.
+
+### Disable proxy
+
+![Disable proxy](./unset-proxy.jpg)
+
+### Enable proxy
+
+![Enable proxy](./use-proxy.jpg)
+
 ## License
 
 MIT — see [`LICENSE`](./LICENSE).
-
