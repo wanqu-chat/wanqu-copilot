@@ -226,7 +226,7 @@ public class BrowserFrame extends JFrame {
           log.info("Installation progress: {} - {}", enumProgress, v);
           if (!builder.getSkipInstallation()) {
             String stage = enumProgress == null ? "" : enumProgress.toString();
-            updateJcefProgressDialog("Browser engine: " + stage, v);
+            updateJcefProgressDialog("Kernel engine: " + stage, v);
           }
         });
 
@@ -278,7 +278,7 @@ public class BrowserFrame extends JFrame {
                   closeJcefProgressDialog();
                   // 创建浏览器 - 使用带 host 的 URL 以便正确解析相对路径
 //                  String initialUrl = "http://localhost:5173/";
-                    String initialUrl = "wanqu-copilot://app/index.html";
+                    String initialUrl = "wanqu-copilot://index.html";
                   createBrowserAndShow(initialUrl);
                 });
           } catch (Exception e) {

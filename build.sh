@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Build jar first
-mvn -DskipTests package
+mvn -DskipTests clean package
 
 PACKAGE_DIR="packaging/mac-amd64"
 DIST_DIR="dist/mac-amd64"
@@ -21,6 +21,8 @@ mkdir -p "${PACKAGE_DIR}" "${DIST_DIR}"
 
 cp "target/${FAT_JAR}" "${PACKAGE_DIR}/"
 
+# Optional: bundle pre-downloaded JCEF into app.
+# Set JCEF_SRC_DIR to a directory (e.g. ./jcef) that contains the JCEF install root.
 JCEF_SRC_DIR="${JCEF_SRC_DIR:-}"
 
 JAVA_OPTIONS=(

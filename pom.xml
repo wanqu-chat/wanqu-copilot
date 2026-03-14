@@ -25,11 +25,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>17</java.version>
 
-        <!-- Defaults for IDE / environments where git-commit-id-maven-plugin isn't executed -->
-        <git.branch>unknown</git.branch>
-        <git.commit.id.abbrev>unknown</git.commit.id.abbrev>
-        <git.commit.id.full>unknown</git.commit.id.full>
-
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <spring-boot.version>3.5.0</spring-boot.version>
@@ -216,13 +211,15 @@
 
                 <executions>
                     <execution>
+                        <id>git-revision</id>
+                        <phase>initialize</phase>
                         <goals>
                             <goal>revision</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
-                    <generateGitPropertiesFile>false</generateGitPropertiesFile>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
                     <includeOnlyProperties>
                         <includeOnlyProperty>git.branch</includeOnlyProperty>
                         <includeOnlyProperty>git.commit.id.abbrev</includeOnlyProperty>
