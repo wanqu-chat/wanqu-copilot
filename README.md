@@ -1,6 +1,6 @@
 # Wanqu Copilot
 
-A minimal desktop Copilot demo app.
+A minimal desktop Copilot demo app. More info https://www.wanqu.chat/
 
 ## Preview
 
